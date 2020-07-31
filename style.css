@@ -4,15 +4,13 @@
 }
 
 .board {
-  margin: 1.2rem;
-  height: 3rem;
-  display: flex;
+  width: fit-content;
+  margin: 20px auto;
+  display: grid;
+  grid-gap: 15px;
+  grid-template: repeat(3, 100px) / repeat(3, 100px);
 }
 
 .block {
-  height: 100px;
-  width: 100px;
-  margin-bottom: 1rem;
-  margin-right: 1rem;
-  background-color: aqua;
+  background-color: #345;
 }
