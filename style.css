@@ -12,5 +12,8 @@
 }
 
 .block {
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
   background-color: #345;
 }
