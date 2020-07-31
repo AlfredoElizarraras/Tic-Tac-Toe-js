@@ -31,7 +31,6 @@ const win = (winArray, boardArray) => {
 
 
 
-
 document.querySelectorAll('.block').forEach(item => {
   item.addEventListener('click', getMove);
 })
