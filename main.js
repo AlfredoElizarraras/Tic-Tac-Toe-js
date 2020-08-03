@@ -1,5 +1,7 @@
 let gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let turnMark = 'X';
+let playerOne = '';
+let playerTwo = '';
 const winner = false;
 
 const winCondition = [
@@ -31,8 +33,8 @@ const getMove = () => {
 const win = (winArray, boardArray) => {
   for (let count = 0; count < winArray.length; count += 1) {
     if (winCondition[count].every((index) => gameBoard[index] === turnMark)) {
-      const winner = turnMark === 'X' ? 'one' : 'two';
-      alert(`Player ${winner} wins!`);
+      const winner = turnMark === 'X' ? playerOne : playerTwo;
+      alert(`${winner} win!`);
       return true;
     }
   }
@@ -63,13 +65,18 @@ document.querySelectorAll('.block').forEach((item) => {
   item.addEventListener('click', getMove);
 });
 
-const displayBoard = () => {
+const displayBoard = (event) => {
   document.querySelector('#board')
     .classList.remove('hide');
 };
 
 document.querySelector('#start')
-  .addEventListener('click', displayBoard);
+  .addEventListener('click', (event) => {
+    displayBoard();
+    playerOne = document.querySelector('#player_1').value;
+    playerTwo = document.querySelector('#player_2').value;
+    event.preventDefault();
+  });
 
 
 document.querySelector('#restart')
