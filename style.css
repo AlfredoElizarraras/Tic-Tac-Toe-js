@@ -21,3 +21,31 @@
 .hide {
   display: none;
 }
+
+h1 { text-align: center; }
+
+.field {
+  margin: 15px auto;
+  padding: 3px 15px;
+}
+
+#btn-submit {
+  margin-left: 70px;
+  font-size: 1.1rem;
+  border: solid 3px #333;
+  border-radius: 5px;
+  background: #fff;
+}h1 { text-align: center; }
+
+.field {
+  margin: 15px auto;
+  padding: 3px 15px;
+}
+
+#btn-submit {
+  margin-left: 70px;
+  font-size: 1.1rem;
+  border: solid 3px #333;
+  border-radius: 5px;
+  background: #fff;
+}

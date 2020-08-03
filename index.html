@@ -8,7 +8,24 @@
   </head>
   <body>
     <h1>Tic Tac Toe Game!</h1>
-    <button id="start">Start</button>
+
+    <form id="form" >
+      <div class="field">
+        <label for="title">Player 1</label>
+        <input id="title" type="text" required>
+      </div>
+  
+      <div class="field">
+        <label for="author">Player 2</label>
+        <input id="author" type="text" required>  
+      </div>
+
+      <div class="field">
+        <button id="start" type="submit" value="Submit">Submit</button>
+      </div>
+    </form>
+
+
 
     <div class="board hide" id="board">
       <div id="1" class="block">1</div>
