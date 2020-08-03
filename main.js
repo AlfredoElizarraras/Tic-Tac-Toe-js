@@ -3,9 +3,14 @@ let turnMark = 'X';
 const winner = false;
 
 const winCondition = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8],
-  [0, 3, 6], [1, 4, 7], [2, 5, 8],
-  [0, 4, 8], [2, 4, 6],
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
 ];
 
 const getMove = () => {
@@ -25,32 +30,35 @@ const getMove = () => {
 
 const win = (winArray, boardArray) => {
   for (let count = 0; count < winArray.length; count += 1) {
-    if (winCondition[count].every(index => gameBoard[index] === turnMark)) {
+    if (winCondition[count].every((index) => gameBoard[index] === turnMark)) {
       const winner = turnMark === 'X' ? 'one' : 'two';
       alert(`Player ${winner} wins!`);
       return true;
     }
   }
+  if (fullBoard(gameBoard)) {
+    return true;
+  }
 };
 
 const fullBoard = (array) => {
-  if (array.every(element => Number)) {
-    alert('Draw! The board is fulfilled')
+  const truth = array.every((element) => typeof element === 'string');
+  if (truth) {
+    alert('Draw');
+    return true;
   }
-}
-
-fullBoard(gameBoard)
+};
 
 const resetGame = () => {
   let count = 1;
   gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   turnMark = 'X';
-  document.querySelectorAll('.block').forEach(item => {
+  document.querySelectorAll('.block').forEach((item) => {
     item.innerHTML = count;
     count += 1;
   });
 };
 
-document.querySelectorAll('.block').forEach(item => {
+document.querySelectorAll('.block').forEach((item) => {
   item.addEventListener('click', getMove);
 });
