@@ -70,3 +70,7 @@ const displayBoard = () => {
 
 document.querySelector('#start')
   .addEventListener('click', displayBoard);
+
+
+document.querySelector('#restart')
+  .addEventListener('click', resetGame);
