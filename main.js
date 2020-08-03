@@ -62,3 +62,11 @@ const resetGame = () => {
 document.querySelectorAll('.block').forEach((item) => {
   item.addEventListener('click', getMove);
 });
+
+const displayBoard = () => {
+  document.querySelector('#board')
+    .classList.remove('hide');
+};
+
+document.querySelector('#start')
+  .addEventListener('click', displayBoard);

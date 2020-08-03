@@ -17,3 +17,7 @@
   text-align: center;
   background-color: #345;
 }
+
+.hide {
+  display: none;
+}
