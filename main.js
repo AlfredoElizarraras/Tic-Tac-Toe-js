@@ -1,64 +1,78 @@
-let gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let turnMark = 'X';
-let playerOne = '';
-let playerTwo = '';
-const winner = false;
+const boardModule = (() => {
+  let gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const winCondition = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  const fullBoard = (array) => {
+    const truth = array.every((element) => typeof element === 'string');
+    if (truth) {
+      return true;
+    }
+  };
+  const resetGame = () => {
+    let count = 1;
+    gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    document.querySelectorAll('.block').forEach((item) => {
+      item.innerHTML = count;
+      count += 1;
+    });
+    console.log('game restart');
+  };
+  const playTurn = (block, player) => {
+    gameBoard[block - 1] = player.mark;
+    console.log(winCondition[1]);
+    for (let count = 0; count < winCondition.length; count += 1) {
+      if (
+        winCondition[count].every((index) => gameBoard[index] === player.mark)
+      ) {
+        return `${player.name} win!`;
+      }
+    }
+    if (fullBoard(gameBoard)) {
+      return 'draw';
+    }
+    return true;
+  };
+  return {
+    playTurn,
+    resetGame,
+  };
+})();
 
-const winCondition = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
+const Player = (name, mark = 'X') => ({ name, mark });
+
+let playerOne;
+let playerTwo;
+let turn = 1;
 
 const getMove = () => {
   const idx = window.event.currentTarget.id;
 
   const sel = document.getElementById(`${idx}`);
-  if (sel.innerHTML !== 'X' && sel.innerHTML !== 'O') {
-    sel.innerHTML = turnMark;
-    gameBoard[idx - 1] = turnMark;
-
-    if (win(winCondition, gameBoard)) resetGame();
-    else turnMark = turnMark === 'X' ? 'O' : 'X';
-  } else {
-    alert('Already taken');
+  if (turn == 1) {
+    setMark(sel, idx, playerOne);
+    turn = 2;
+  } else if (turn == 2) {
+    setMark(sel, idx, playerTwo);
+    turn = 1;
   }
 };
 
-const win = (winArray, boardArray) => {
-  for (let count = 0; count < winArray.length; count += 1) {
-    if (winCondition[count].every((index) => gameBoard[index] === turnMark)) {
-      const winner = turnMark === 'X' ? playerOne : playerTwo;
-      alert(`${winner} win!`);
-      return true;
+const setMark = (sel, idx, player) => {
+  if (sel.innerHTML !== playerOne.mark && sel.innerHTML !== playerTwo.mark) {
+    sel.innerHTML = player.mark;
+    const status = boardModule.playTurn(idx, player);
+    if (status != true) {
+      alert(status);
     }
   }
-  if (fullBoard(gameBoard)) {
-    return true;
-  }
-};
-
-const fullBoard = (array) => {
-  const truth = array.every((element) => typeof element === 'string');
-  if (truth) {
-    alert('Draw');
-    return true;
-  }
-};
-
-const resetGame = () => {
-  let count = 1;
-  gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  turnMark = 'X';
-  document.querySelectorAll('.block').forEach((item) => {
-    item.innerHTML = count;
-    count += 1;
-  });
 };
 
 document.querySelectorAll('.block').forEach((item) => {
@@ -66,18 +80,21 @@ document.querySelectorAll('.block').forEach((item) => {
 });
 
 const displayBoard = (event) => {
-  document.querySelector('#board')
-    .classList.remove('hide');
+  document.querySelector('#board').classList.remove('hide');
 };
 
-document.querySelector('#start')
-  .addEventListener('click', (event) => {
-    displayBoard();
-    playerOne = document.querySelector('#player_1').value;
-    playerTwo = document.querySelector('#player_2').value;
-    event.preventDefault();
+document.querySelector('#start').addEventListener('click', (event) => {
+  displayBoard();
+  const playerOneName = document.querySelector('#player_1').value;
+  const playerTwoName = document.querySelector('#player_2').value;
+  playerOne = Player(playerOneName, 'X');
+  playerTwo = Player(playerTwoName, 'O');
+  event.preventDefault();
+});
+
+document
+  .querySelector('#restart')
+  .addEventListener('click', () => {
+    turn = 1;
+    boardModule.resetGame();
   });
-
-
-document.querySelector('#restart')
-  .addEventListener('click', resetGame);
