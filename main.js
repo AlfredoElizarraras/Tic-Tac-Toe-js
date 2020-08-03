@@ -1,77 +1,35 @@
-const boardModule = (() => {
-  let gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const winCondition = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  const fullBoard = (array) => {
-    const truth = array.every((element) => typeof element === 'string');
-    if (truth) {
-      return true;
-    }
-  };
-  const resetGame = () => {
-    let count = 1;
-    gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    document.querySelectorAll('.block').forEach((item) => {
-      item.innerHTML = count;
-      count += 1;
-    });
-    console.log('game restart');
-  };
-  const playTurn = (block, player) => {
-    gameBoard[block - 1] = player.mark;
-    console.log(winCondition[1]);
-    for (let count = 0; count < winCondition.length; count += 1) {
-      if (
-        winCondition[count].every((index) => gameBoard[index] === player.mark)
-      ) {
-        return `${player.name} win!`;
-      }
-    }
-    if (fullBoard(gameBoard)) {
-      return 'draw';
-    }
-    return true;
-  };
-  return {
-    playTurn,
-    resetGame,
-  };
-})();
-
-const Player = (name, mark = 'X') => ({ name, mark });
-
 let playerOne;
 let playerTwo;
 let turn = 1;
 
-const getMove = () => {
-  const idx = window.event.currentTarget.id;
+const Player = (name, mark = 'X') => ({ name, mark });
 
-  const sel = document.getElementById(`${idx}`);
-  if (turn == 1) {
-    setMark(sel, idx, playerOne);
-    turn = 2;
-  } else if (turn == 2) {
-    setMark(sel, idx, playerTwo);
-    turn = 1;
-  }
+const showMessage = (msg) => {
+  const sel = document.body.querySelector('#message');
+  const insert = document.createElement('p');
+  insert.innerHTML = msg;
+  sel.appendChild(insert);
 };
 
 const setMark = (sel, idx, player) => {
   if (sel.innerHTML !== playerOne.mark && sel.innerHTML !== playerTwo.mark) {
     sel.innerHTML = player.mark;
     const status = boardModule.playTurn(idx, player);
-    if (status != true) {
-      alert(status);
+    if (status !== true) {
+      showMessage(status);
     }
+  }
+};
+
+const getMove = () => {
+  const idx = window.event.currentTarget.id;
+  const sel = document.getElementById(`${idx}`);
+  if (turn === 1) {
+    setMark(sel, idx, playerOne);
+    turn = 2;
+  } else if (turn === 2) {
+    setMark(sel, idx, playerTwo);
+    turn = 1;
   }
 };
 
@@ -79,9 +37,7 @@ document.querySelectorAll('.block').forEach((item) => {
   item.addEventListener('click', getMove);
 });
 
-const displayBoard = (event) => {
-  document.querySelector('#board').classList.remove('hide');
-};
+const displayBoard = () => { document.querySelector('#board').classList.remove('hide'); };
 
 document.querySelector('#start').addEventListener('click', (event) => {
   displayBoard();
