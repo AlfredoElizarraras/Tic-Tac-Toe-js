@@ -18,7 +18,7 @@
 
 ## Live Demo
 You can access a deployed version of this app:<br>
-https://raw.githack.com/SevlaMare/Library/feature-library-app/index.html
+https://raw.githack.com/AlfredoElizarraras/Tic-Tac-Toe-js/feature/app/index.html
 
 ## Requirements
 - [x] Store data from form to an array
