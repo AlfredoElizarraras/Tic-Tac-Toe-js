@@ -1,4 +1,4 @@
-import boardModule from './board';
+import boardModule from './board.js'; // eslint-disable-line import/extensions
 
 let playerOne;
 let playerTwo;
