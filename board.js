@@ -16,6 +16,7 @@ const boardModule = (() => {
     if (truth) {
       return true;
     }
+    return false;
   };
 
   const resetGame = () => {
@@ -29,9 +30,10 @@ const boardModule = (() => {
 
   const playTurn = (block, player) => {
     gameBoard[block - 1] = player.mark;
+    const arr = [...gameBoard];
     for (let count = 0; count < winCondition.length; count += 1) {
       if (
-        winCondition[count].every((index) => gameBoard[index] === player.mark)
+        winCondition[count].every((index) => arr[index] === player.mark)
       ) {
         return `${player.name} win!`;
       }
@@ -47,3 +49,5 @@ const boardModule = (() => {
     resetGame,
   };
 })();
+
+export default boardModule;

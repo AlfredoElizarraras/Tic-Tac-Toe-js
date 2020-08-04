@@ -1,3 +1,5 @@
+import boardModule from './board';
+
 let playerOne;
 let playerTwo;
 let turn = 1;
