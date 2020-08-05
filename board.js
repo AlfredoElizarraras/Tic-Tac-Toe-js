@@ -20,11 +20,9 @@ const boardModule = (() => {
   };
 
   const resetGame = () => {
-    let count = 1;
     gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     document.querySelectorAll('.block').forEach((item) => {
-      item.innerHTML = count;
-      count += 1;
+      item.innerHTML = '';
     });
   };
 
