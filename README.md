@@ -1,7 +1,7 @@
 # Tic Tac Toe game
 > Play the classic game of tic tac toe.
 
-![Board screenshot](/assets/images/screenshot.png)
+![Board screenshot](/assets/images/screenshot.jpg)
 
 <br>This project was made to practice DOM manipulation on pair programming.<br>
 
