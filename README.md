@@ -1,7 +1,7 @@
 # Tic Tac Toe game
 > Play the classic game of tic tac toe.
 
-<!-- ![screenshot](screenshot.png) -->
+![Board screenshot](/assets/images/screenshot.jpg)
 
 <br>This project was made to practice DOM manipulation on pair programming.<br>
 
@@ -18,7 +18,7 @@
 
 ## Live Demo
 You can access a deployed version of this app:<br>
-https://raw.githack.com/SevlaMare/Library/feature-library-app/index.html
+https://raw.githack.com/AlfredoElizarraras/Tic-Tac-Toe-js/feature/app/index.html
 
 ## Requirements
 - [x] Store data from form to an array
@@ -42,8 +42,8 @@ To use this program, you will need only a web browser like google crome.
 
 #### Get a local copy
 Now you need a copy of this application, if you are using Git:
-```js
-git clone git@github.com:SevlaMare/libray.git
+```
+git clone https://github.com/AlfredoElizarraras/Tic-Tac-Toe-js.git
 ```
 Otherwise just hit (Download Zip) on green button (Clone or Download) at top of this page.
 
@@ -54,24 +54,24 @@ You can just drag and drop index.html to your browser.
 
 Contributions, issues and feature requests are welcome!
 
-You can do it on [issues page](issues/).
+You can do it on [issues page](https://github.com/AlfredoElizarraras/Tic-Tac-Toe-js/issues).
 
 ## Acknowledgments
 
 A special thanks for the code reviewers.
 
 ## Author
-👤 **Oscar Elizarrarás**
-
-- Github: [@Oscar](https://github.com/AlfredoElizarraras)
-- Twitter: [#Oscar](https://twitter.com/OscarAlfredoGm4)
-- Linkedin: [Oscar](https://mx.linkedin.com/in/oscar-alfredo-gomez-elizarraras)
-
 👤 **Thiago Miranda**
 
 - Github: [@SevlaMare](https://github.com/SevlaMare)
 - Twitter: [#SevlaMare](https://twitter.com/SevlaMare)
 - Linkedin: [SevlaMare](https://www.linkedin.com/in/sevla-mare)
+
+👤 **Oscar Elizarrarás**
+
+- Github: [@Oscar](https://github.com/AlfredoElizarraras)
+- Twitter: [#Oscar](https://twitter.com/OscarAlfredoGm4)
+- Linkedin: [Oscar](https://mx.linkedin.com/in/oscar-alfredo-gomez-elizarraras)
 
 ### License
 <strong>Creative Commons • July 2020</strong>

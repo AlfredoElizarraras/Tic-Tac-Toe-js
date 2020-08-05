@@ -2,3 +2,37 @@
   margin: 0;
   padding: 0;
 }
+
+.board {
+  width: fit-content;
+  margin: 20px auto;
+  display: grid;
+  grid-gap: 15px;
+  grid-template: repeat(3, 100px) / repeat(3, 100px);
+}
+
+.block {
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  background-color: #345;
+}
+
+.hide {
+  display: none;
+}
+
+h1 { text-align: center; }
+
+#btn-submit {
+  margin-left: 70px;
+  font-size: 1.1rem;
+  border: solid 3px #333;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.field {
+  margin: 15px auto;
+  padding: 3px 15px;
+}
