@@ -173,8 +173,7 @@ const boardModule = (() => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.css */ "./src/css/style.css");
 /* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _board_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./board.js */ "./src/board.js");
-
+/* harmony import */ var _board__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./board */ "./src/board.js");
 
 
 
@@ -194,7 +193,7 @@ const showMessage = (msg) => {
 const setMark = (sel, idx, player) => {
   if (sel.innerHTML !== playerOne.mark && sel.innerHTML !== playerTwo.mark) {
     sel.innerHTML = player.mark;
-    const status = _board_js__WEBPACK_IMPORTED_MODULE_1__["boardModule"].playTurn(idx, player);
+    const status = _board__WEBPACK_IMPORTED_MODULE_1__["default"].playTurn(idx, player);
     if (status !== true) {
       showMessage(status);
     }
@@ -232,7 +231,7 @@ document
   .querySelector('#restart')
   .addEventListener('click', () => {
     turn = 1;
-    _board_js__WEBPACK_IMPORTED_MODULE_1__["boardModule"].resetGame();
+    _board__WEBPACK_IMPORTED_MODULE_1__["default"].resetGame();
   });
 
 
