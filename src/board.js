@@ -29,6 +29,7 @@ const boardModule = (() => {
   const playTurn = (block, player) => {
     gameBoard[block - 1] = player.mark;
     const arr = [...gameBoard];
+
     for (let count = 0; count < winCondition.length; count += 1) {
       if (
         winCondition[count].every((index) => arr[index] === player.mark)
@@ -44,8 +45,7 @@ const boardModule = (() => {
 
   return {
     playTurn,
-    resetGame,
-    gameBoard
+    resetGame
   };
 })();
 

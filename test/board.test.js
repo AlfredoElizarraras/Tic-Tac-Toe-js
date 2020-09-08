@@ -1,4 +1,4 @@
-import boardModule from './board'; // eslint-disable-line import/extensions
+import boardModule from '../src/board';
 
 describe('test suit for play the game', () => {
   it('should have a winner with winning codition', () => {
@@ -31,18 +31,15 @@ describe('test suit for play the game', () => {
     };
 
     boardModule.playTurn(1, player1);
-    boardModule.playTurn(2, player2);
-    boardModule.playTurn(3, player1);
-
     boardModule.playTurn(4, player2);
-    boardModule.playTurn(5, player1);
+    boardModule.playTurn(2, player1);
+    boardModule.playTurn(5, player2);
+    boardModule.playTurn(3, player1);
     boardModule.playTurn(6, player2);
 
-    boardModule.playTurn(7, player2);
-    boardModule.playTurn(8, player1);
-    boardModule.playTurn(9, player2);
-
-    console.log(boardModule.gameBoard)
+    boardModule.playTurn(7, player1);
+    boardModule.playTurn(8, player2);
+    boardModule.playTurn(9, player1);
 
     expect(boardModule.playTurn(7, player1)).toBe('draw!');
   });
