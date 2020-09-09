@@ -116,11 +116,12 @@ const boardModule = (() => {
     return false;
   };
 
-  const resetGame = () => {
-    gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const resetGame = (board) => {
+    board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     document.querySelectorAll('.block').forEach((item) => {
       item.innerHTML = '';
     });
+    return board
   };
 
   const playTurn = (block, player) => {
@@ -142,7 +143,9 @@ const boardModule = (() => {
 
   return {
     playTurn,
-    resetGame
+    resetGame,
+    fullBoard,
+    gameBoard
   };
 })();
 
@@ -162,6 +165,86 @@ const boardModule = (() => {
 
 /***/ }),
 
+/***/ "./src/helpers.js":
+/*!************************!*\
+  !*** ./src/helpers.js ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _board__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./board */ "./src/board.js");
+
+
+const Helpers = (() => {
+  let playerOne = null;
+  let playerTwo = null;
+  let turn = 1;
+  const Player = (name, mark = "X") => ({ name, mark });
+
+  const showMessage = (msg) => {
+    const sel = document.body.querySelector("#message");
+    const insert = document.createElement("p");
+    insert.innerHTML = msg;
+    sel.appendChild(insert);
+  };
+
+  const setMark = (sel, idx, player) => {
+    if (sel.innerHTML !== playerOne.mark && sel.innerHTML !== playerTwo.mark) {
+      sel.innerHTML = player.mark;
+      const status = _board__WEBPACK_IMPORTED_MODULE_0__["default"].playTurn(idx, player);
+      if (status !== true) {
+        showMessage(status);
+      }
+    }
+  };
+
+  const getMove = () => {
+    const idx = window.event.currentTarget.id;
+    const sel = document.getElementById(`${idx}`);
+    if (turn === 1) {
+      setMark(sel, idx, playerOne);
+      turn = 2;
+    } else if (turn === 2) {
+      setMark(sel, idx, playerTwo);
+      turn = 1;
+    }
+  };
+
+  const displayBoard = () => {
+    document.querySelector("#board").classList.remove("hide");
+  };
+
+  const setPlayerPlayerOne = (name) => {
+    playerOne = Player(name, 'X')
+  };
+
+  const setPlayerPlayerTwo = (name) => {
+    playerTwo = Player(name, 'O')
+  };
+
+  const restartTurn = () =>{ 
+    turn = 1;
+  };
+
+  return {
+    Player,
+    showMessage,
+    setMark,
+    getMove,
+    displayBoard,
+    setPlayerPlayerOne,
+    setPlayerPlayerTwo,
+    restartTurn,
+  };
+})();
+
+/* harmony default export */ __webpack_exports__["default"] = (Helpers);
+
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -174,63 +257,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.css */ "./src/css/style.css");
 /* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _board__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./board */ "./src/board.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
 
 
 
-let playerOne;
-let playerTwo;
-let turn = 1;
-
-const Player = (name, mark = 'X') => ({ name, mark });
-
-const showMessage = (msg) => {
-  const sel = document.body.querySelector('#message');
-  const insert = document.createElement('p');
-  insert.innerHTML = msg;
-  sel.appendChild(insert);
-};
-
-const setMark = (sel, idx, player) => {
-  if (sel.innerHTML !== playerOne.mark && sel.innerHTML !== playerTwo.mark) {
-    sel.innerHTML = player.mark;
-    const status = _board__WEBPACK_IMPORTED_MODULE_1__["default"].playTurn(idx, player);
-    if (status !== true) {
-      showMessage(status);
-    }
-  }
-};
-
-const getMove = () => {
-  const idx = window.event.currentTarget.id;
-  const sel = document.getElementById(`${idx}`);
-  if (turn === 1) {
-    setMark(sel, idx, playerOne);
-    turn = 2;
-  } else if (turn === 2) {
-    setMark(sel, idx, playerTwo);
-    turn = 1;
-  }
-};
 
 document.querySelectorAll('.block').forEach((item) => {
-  item.addEventListener('click', getMove);
+  item.addEventListener('click', _helpers__WEBPACK_IMPORTED_MODULE_2__["default"].getMove);
 });
 
-const displayBoard = () => { document.querySelector('#board').classList.remove('hide'); };
-
 document.querySelector('#start').addEventListener('click', (event) => {
-  displayBoard();
+  _helpers__WEBPACK_IMPORTED_MODULE_2__["default"].displayBoard();
   const playerOneName = document.querySelector('#player_1').value;
   const playerTwoName = document.querySelector('#player_2').value;
-  playerOne = Player(playerOneName, 'X');
-  playerTwo = Player(playerTwoName, 'O');
+  _helpers__WEBPACK_IMPORTED_MODULE_2__["default"].setPlayerPlayerOne(playerOneName);
+  _helpers__WEBPACK_IMPORTED_MODULE_2__["default"].setPlayerPlayerTwo(playerTwoName);
   event.preventDefault();
 });
 
 document
   .querySelector('#restart')
   .addEventListener('click', () => {
-    turn = 1;
+    _helpers__WEBPACK_IMPORTED_MODULE_2__["default"].restartTurn();
     _board__WEBPACK_IMPORTED_MODULE_1__["default"].resetGame();
   });
 
