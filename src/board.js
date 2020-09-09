@@ -1,5 +1,5 @@
 const boardModule = (() => {
-  let gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const winCondition = [
     [0, 1, 2],
     [3, 4, 5],
@@ -19,16 +19,18 @@ const boardModule = (() => {
     return false;
   };
 
-  const resetGame = () => {
-    gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const resetGame = (board) => {
+    board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     document.querySelectorAll('.block').forEach((item) => {
       item.innerHTML = '';
     });
+    return board;
   };
 
   const playTurn = (block, player) => {
     gameBoard[block - 1] = player.mark;
     const arr = [...gameBoard];
+
     for (let count = 0; count < winCondition.length; count += 1) {
       if (
         winCondition[count].every((index) => arr[index] === player.mark)
@@ -45,6 +47,8 @@ const boardModule = (() => {
   return {
     playTurn,
     resetGame,
+    fullBoard,
+    gameBoard,
   };
 })();
 

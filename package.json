@@ -1,0 +1,58 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "Classic Tic Tac Toe now in JavaScript",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.17.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.2",
+    "css-minimizer-webpack-plugin": "^1.1.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.3.0",
+    "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.4.2",
+    "mini-css-extract-plugin": "^0.11.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.1",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.8.0",
+    "stylelint-scss": "^3.17.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "build": "webpack --mode development",
+    "build:watch": "webpack -w --mode development",
+    "build:prod": "webpack --mode production",
+    "go": "webpack-dev-server --host 0.0.0.0 --port 7000",
+    "stylelint": "npx stylelint ./src/css/*.css",
+    "eslint": "npx eslint ./src/*.js",
+    "eslint2": "npx eslint ./test/*.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlfredoElizarraras/Tic-Tac-Toe-js.git"
+  },
+  "author": "Thiago Miranda and Oscar Alfredo Gómez Elizarrarás",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlfredoElizarraras/Tic-Tac-Toe-js/issues"
+  },
+  "homepage": "https://github.com/AlfredoElizarraras/Tic-Tac-Toe-js#readme"
+}
