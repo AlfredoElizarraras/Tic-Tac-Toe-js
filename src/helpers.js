@@ -4,6 +4,7 @@ const Helpers = (() => {
   let playerOne = null;
   let playerTwo = null;
   let turn = 1;
+
   const Player = (name, mark = 'X') => ({ name, mark });
 
   const showMessage = (msg) => {
@@ -52,9 +53,6 @@ const Helpers = (() => {
   };
 
   return {
-    Player,
-    showMessage,
-    setMark,
     getMove,
     displayBoard,
     setPlayerPlayerOne,
