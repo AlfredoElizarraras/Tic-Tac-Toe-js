@@ -1,5 +1,5 @@
 const boardModule = (() => {
-  let gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const winCondition = [
     [0, 1, 2],
     [3, 4, 5],
@@ -24,7 +24,7 @@ const boardModule = (() => {
     document.querySelectorAll('.block').forEach((item) => {
       item.innerHTML = '';
     });
-    return board
+    return board;
   };
 
   const playTurn = (block, player) => {
@@ -48,7 +48,7 @@ const boardModule = (() => {
     playTurn,
     resetGame,
     fullBoard,
-    gameBoard
+    gameBoard,
   };
 })();
 

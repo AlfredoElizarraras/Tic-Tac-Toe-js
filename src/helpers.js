@@ -4,11 +4,11 @@ const Helpers = (() => {
   let playerOne = null;
   let playerTwo = null;
   let turn = 1;
-  const Player = (name, mark = "X") => ({ name, mark });
+  const Player = (name, mark = 'X') => ({ name, mark });
 
   const showMessage = (msg) => {
-    const sel = document.body.querySelector("#message");
-    const insert = document.createElement("p");
+    const sel = document.body.querySelector('#message');
+    const insert = document.createElement('p');
     insert.innerHTML = msg;
     sel.appendChild(insert);
   };
@@ -36,18 +36,18 @@ const Helpers = (() => {
   };
 
   const displayBoard = () => {
-    document.querySelector("#board").classList.remove("hide");
+    document.querySelector('#board').classList.remove('hide');
   };
 
   const setPlayerPlayerOne = (name) => {
-    playerOne = Player(name, 'X')
+    playerOne = Player(name, 'X');
   };
 
   const setPlayerPlayerTwo = (name) => {
-    playerTwo = Player(name, 'O')
+    playerTwo = Player(name, 'O');
   };
 
-  const restartTurn = () =>{ 
+  const restartTurn = () => {
     turn = 1;
   };
 
