@@ -56,8 +56,10 @@ describe('fullBoard', () => {
 
 describe('resetGame', () => {
   it('should reset board array', () => {
-    boardModule.gameBoard = ['x', 2, 3, 'o', 5, 6, 7, 8, 9];
-    boardModule.resetGame()
-    expect(boardModule.gameBoard).toBe([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    boardModule.gameBoard = ['x', 2, 3, 4, 5, 6, 7, 8, 9];
+    boardModule.resetGame(boardModule.gameBoard);
+
+    // console.log(boardModule.gameBoard)
+    expect(boardModule.gameBoard).toBe([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 });

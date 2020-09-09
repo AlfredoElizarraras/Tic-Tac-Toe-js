@@ -19,11 +19,12 @@ const boardModule = (() => {
     return false;
   };
 
-  const resetGame = () => {
-    gameBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const resetGame = (board) => {
+    board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     document.querySelectorAll('.block').forEach((item) => {
       item.innerHTML = '';
     });
+    return board
   };
 
   const playTurn = (block, player) => {
@@ -48,6 +49,7 @@ const boardModule = (() => {
     resetGame,
     fullBoard,
     resetGame,
+    gameBoard
   };
 })();
 
