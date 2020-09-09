@@ -2,14 +2,14 @@ import boardModule from '../src/board';
 
 describe('playTurn', () => {
   it('should have a winner with winning codition', () => {
-    let player1 = {
+    const player1 = {
       mark: 'X',
-      name: 'player Test'
+      name: 'player Test',
     };
 
-    let player2 = {
+    const player2 = {
       mark: 'O',
-      name: 'player Test 1'
+      name: 'player Test 1',
     };
 
     boardModule.playTurn(1, player1);
@@ -20,14 +20,14 @@ describe('playTurn', () => {
   });
 
   it('should have a draw', () => {
-    let player1 = {
+    const player1 = {
       mark: 'X',
-      name: 'player Test'
+      name: 'player Test',
     };
 
-    let player2 = {
+    const player2 = {
       mark: 'O',
-      name: 'player Test 1'
+      name: 'player Test 1',
     };
 
     boardModule.playTurn(1, player1);
@@ -45,11 +45,11 @@ describe('playTurn', () => {
 
 describe('fullBoard', () => {
   it('should be full', () => {
-    expect(boardModule.fullBoard(['x','o','x','o','x','o','x','o','x'])).toBe(true)
+    expect(boardModule.fullBoard(['x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x'])).toBe(true);
   });
 
   it('should not be full', () => {
-    expect(boardModule.fullBoard(['x','o','x','o','x','o','x','o', 9])).toBe(false)
+    expect(boardModule.fullBoard(['x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 9])).toBe(false);
   });
 });
 
