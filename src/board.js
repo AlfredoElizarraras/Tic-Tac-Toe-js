@@ -47,7 +47,7 @@ const boardModule = (() => {
     playTurn,
     resetGame,
     fullBoard,
-    resetGame
+    resetGame,
   };
 })();
 

@@ -2,14 +2,14 @@ import boardModule from '../src/board';
 
 describe('playTurn', () => {
   it('should have a winner with winning codition', () => {
-    const player1 = {
+    let player1 = {
       mark: 'X',
-      name: 'player Test',
+      name: 'player Test'
     };
 
-    const player2 = {
+    let player2 = {
       mark: 'O',
-      name: 'player Test 1',
+      name: 'player Test 1'
     };
 
     boardModule.playTurn(1, player1);
@@ -20,14 +20,14 @@ describe('playTurn', () => {
   });
 
   it('should have a draw', () => {
-    const player1 = {
+    let player1 = {
       mark: 'X',
-      name: 'player Test',
+      name: 'player Test'
     };
 
-    const player2 = {
+    let player2 = {
       mark: 'O',
-      name: 'player Test 1',
+      name: 'player Test 1'
     };
 
     boardModule.playTurn(1, player1);
@@ -53,4 +53,3 @@ describe('fullBoard', () => {
     expect(boardModule.fullBoard(['x','o','x','o','x','o','x','o', 9])).toBe(false)
   });
 });
-
