@@ -36,11 +36,10 @@ describe('playTurn', () => {
     boardModule.playTurn(5, player2);
     boardModule.playTurn(4, player1);
     boardModule.playTurn(6, player2);
-
     boardModule.playTurn(8, player1);
     boardModule.playTurn(7, player2);
 
-    expect(boardModule.playTurn(9, player1)).toMatchObject('draw');
+    expect(boardModule.playTurn(9, player1)).toBe('draw');
   });
 });
 
