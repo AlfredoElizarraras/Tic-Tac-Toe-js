@@ -43,3 +43,14 @@ describe('playTurn', () => {
     expect(boardModule.playTurn(9, player1)).toBe('draw');
   });
 });
+
+describe('fullBoard', () => {
+  it('should be full', () => {
+    expect(boardModule.fullBoard(['x','o','x','o','x','o','x','o','x'])).toBe(true)
+  });
+
+  it('should not be full', () => {
+    expect(boardModule.fullBoard(['x','o','x','o','x','o','x','o', 9])).toBe(false)
+  });
+});
+
