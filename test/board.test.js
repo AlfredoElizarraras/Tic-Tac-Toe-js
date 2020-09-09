@@ -1,6 +1,6 @@
 import boardModule from '../src/board';
 
-describe('test suit for play the game', () => {
+describe('playTurn', () => {
   it('should have a winner with winning codition', () => {
     let player1 = {
       mark: 'X',
