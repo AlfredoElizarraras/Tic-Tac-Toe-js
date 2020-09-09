@@ -40,7 +40,7 @@ describe('playTurn', () => {
     boardModule.playTurn(8, player1);
     boardModule.playTurn(7, player2);
 
-    expect(boardModule.playTurn(9, player1)).toBe('draw');
+    expect(boardModule.playTurn(9, player1)).toMatchObject('draw');
   });
 });
 
@@ -57,9 +57,7 @@ describe('fullBoard', () => {
 describe('resetGame', () => {
   it('should reset board array', () => {
     boardModule.gameBoard = ['x', 2, 3, 4, 5, 6, 7, 8, 9];
-    boardModule.resetGame(boardModule.gameBoard);
-
-    // console.log(boardModule.gameBoard)
-    expect(boardModule.gameBoard).toBe([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(boardModule.resetGame(boardModule.gameBoard))
+      .toMatchObject([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 });
